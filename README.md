@@ -1,15 +1,10 @@
-# cargoBackend
+# CMS
 
 
 
 ## Clone it
     command: 
-        git clone https://github.com/Zuneeue/cargoBackend.git
-
-
-## Go inside the foldwer
-    command: 
-        cd cargoBackend
+        git clone https://github.com/shubhampoddar10/CMS.git
 
 
 ## Install all node modules
@@ -24,7 +19,7 @@
 ### Prerequities:
     1. Node js should be installed if not than below is the link.
     2. MongoDB should be installed if not than below is the link.
-    3. Redsi should be installed if not than below is the link.
+    3. Redii should be installed if not than below is the link.
 
 
 ##### [click here](https://nodejs.org/en/download/) to get node.js

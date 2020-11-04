@@ -1,0 +1,6 @@
+{
+    "port": 13000,
+    "db": "logistics",
+    "user_collection": "users",
+    "inquiery_collecction": "inquiery"
+}
