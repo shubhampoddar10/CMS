@@ -1,0 +1,549 @@
+<div class="container-fluid" style="margin-top: 50px;">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-danger">
+                    <h4 class="card-title">Job Card</h4>
+                </div>
+                <form #jobCard="ngForm" (submit)="onSubmit(jobCard)">
+                    <div class="card-body">
+                        <div class="col-md-12">
+                            <div class="form-row">
+                                <div class="col-md-10">
+                                    <!-- Job Card Info Starts -->
+                                    <div class="info">
+                                        <label class="subTitle" style="font-size: 19px;">Job Card Information</label>
+                                        <hr>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4">
+                                            <label for="date"> <span class="required"
+                                                    style="color: red;">*</span>Date</label>
+                                            <input type="date" class="form-control" name="date" required #date="ngModel"
+                                                ngModel [(ngModel)]="sDate">
+                                            <span class="help-block" *ngIf="!date.valid && date.touched"
+                                                style="color: red;">Please enter a
+                                                valid
+                                                date</span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for=""> <span class="required" style="color: red;">*</span>Job
+                                                No.</label>
+                                            <input type="text" class="form-control" name="jobno" required
+                                                #jobno="ngModel" ngModel [(ngModel)]="sJobNo">
+                                            <span class="help-block" *ngIf="!jobno.valid && jobno.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                    </div>
+                                    <!-- Job Card Info Ends -->
+                                    <!-- Transport Info Starts -->
+                                    <div class="info">
+                                        <label class="subTitle" style="font-size: 19px;">Transport Information</label>
+                                        <hr>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4">
+                                            <label for=""> <span class="required"
+                                                    style="color: red;">*</span>Mode</label>
+                                            <input type="" class="form-control" name="mode" required #mode="ngModel"
+                                                ngModel [(ngModel)]="sMode">
+                                            <span class="help-block" *ngIf="!mode.valid && mode.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for=""> <span class="required" style="color: red;">*</span>Type of Load</label>
+                                            <input type="" class="form-control" name="type" required
+                                                #type="ngModel" ngModel [(ngModel)]="sType">
+                                            <span class="help-block" *ngIf="!type.valid && type.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for=""> <span class="required" style="color: red;">*</span>Activity</label>
+                                            <input type="text" class="form-control" name="activity" required
+                                                #activity="ngModel" ngModel [(ngModel)]="sActivity">
+                                            <span class="help-block" *ngIf="!activity.valid && activity.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for=""> <span class="required" style="color: red;">*</span>Inco Terms</label>
+                                            <input type="text" class="form-control" name="incoTerms" required
+                                                #incoTerms="ngModel" ngModel [(ngModel)]="sIncoTerms">
+                                            <span class="help-block" *ngIf="!incoTerms.valid && incoTerms.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                    </div>
+                                    <!-- Transport Info Starts -->
+                                    <!-- Package Info Starts -->
+                                    <div class="info">
+                                        <label class="subTitle" style="font-size: 19px;">Package Information</label>
+                                        <hr>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4">
+                                            <label for=""> <span class="required"
+                                                    style="color: red;">*</span>Counter Part</label>
+                                            <input type="" class="form-control" name="counterpart" required #counterpart="ngModel"
+                                                ngModel [(ngModel)]="sCounterPart">
+                                            <span class="help-block" *ngIf="!counterpart.valid && counterpart.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for=""> <span class="required" style="color: red;">*</span>Consignee</label>
+                                            <input type="text" class="form-control" name="consignee" required
+                                                #consignee="ngModel" ngModel [(ngModel)]="sConsignee">
+                                            <span class="help-block" *ngIf="!consignee.valid && consignee.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for=""> <span class="required" style="color: red;">*</span>Shipper</label>
+                                            <input type="text" class="form-control" name="shipper" required
+                                                #shipper="ngModel" ngModel [(ngModel)]="sShipper">
+                                            <span class="help-block" *ngIf="!shipper.valid && shipper.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for=""> <span class="required" style="color: red;">*</span>Port of Discharge</label>
+                                            <input type="text" class="form-control" name="pod" required
+                                                #pod="ngModel" ngModel [(ngModel)]="sPod">
+                                            <span class="help-block" *ngIf="!pod.valid && pod.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for=""> <span class="required" style="color: red;">*</span>Port of Loading</label>
+                                            <input type="text" class="form-control" name="pol" required
+                                                #pol="ngModel" ngModel [(ngModel)]="sPol">
+                                            <span class="help-block" *ngIf="!pol.valid && pol.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for=""> <span class="required" style="color: red;">*</span>Number of Packages</label>
+                                            <input type="text" class="form-control" name="nop" required
+                                                #nop="ngModel" ngModel [(ngModel)]="sNop">
+                                            <span class="help-block" *ngIf="!nop.valid && nop.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for=""> <span class="required" style="color: red;">*</span>Type of Packages</label>
+                                            <input type="text" class="form-control" name="top" required
+                                                #top="ngModel" ngModel [(ngModel)]="sTop">
+                                            <span class="help-block" *ngIf="!top.valid && top.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for=""> <span class="required" style="color: red;">*</span>Gross Wt in Kgs</label>
+                                            <input type="number" class="form-control" name="gWt" required
+                                                #gWt="ngModel" ngModel [(ngModel)]="sGwt">
+                                            <span class="help-block" *ngIf="!gWt.valid && gWt.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for=""> <span class="required" style="color: red;">*</span>Chargable Wt in Kgs</label>
+                                            <input type="number" class="form-control" name="cWt" required
+                                                #cWt="ngModel" ngModel [(ngModel)]="sCwt">
+                                            <span class="help-block" *ngIf="!cWt.valid && cWt.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for=""> <span class="required" style="color: red;">*</span>CBM</label>
+                                            <input type="number" class="form-control" name="cbm" required
+                                                #cbm="ngModel" ngModel [(ngModel)]="scbm">
+                                            <span class="help-block" *ngIf="!cbm.valid && cbm.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for=""> <span class="required" style="color: red;">*</span>No. of Containers</label>
+                                            <input type="text" class="form-control" name="noc" required
+                                                #noc="ngModel" ngModel [(ngModel)]="sNoc">
+                                            <span class="help-block" *ngIf="!noc.valid && noc.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for=""> <span class="required" style="color: red;">*</span>Type of Container</label>
+                                            <input type="text" class="form-control" name="toc" required
+                                                #toc="ngModel" ngModel [(ngModel)]="sToc">
+                                            <span class="help-block" *ngIf="!toc.valid && toc.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for=""> <span class="required" style="color: red;">*</span>Size of Container</label>
+                                            <input type="text" class="form-control" name="size" required
+                                                #size="ngModel" ngModel [(ngModel)]="sSize">
+                                            <span class="help-block" *ngIf="!size.valid && size.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for=""> <span class="required" style="color: red;">*</span>Free Days</label>
+                                            <input type="text" class="form-control" name="freeDays" required
+                                                #freeDays="ngModel"  [(ngModel)]="sFreeDays">
+                                            <span class="help-block" *ngIf="!freeDays.valid && freeDays.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for=""> <span class="required" style="color: red;">*</span>Nature</label>
+                                            <input type="text" class="form-control" name="nature" required
+                                                #nature="ngModel" ngModel [(ngModel)]="sNature">
+                                            <span class="help-block" *ngIf="!nature.valid && nature.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                    </div>
+                                    <!-- Package Info Starts -->
+                                    <!-- Billing info Starts -->
+                                    <div class="info">
+                                        <label class="subTitle" style="font-size: 19px;">Billing  Information</label>
+                                        <hr>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4">
+                                            <label for=""> <span class="required" style="color: red;">*</span>HAWB Details</label>
+                                            <input type="text" class="form-control" name="hawb" required
+                                                #hawb="ngModel" ngModel>
+                                            <span class="help-block" *ngIf="!hawb.valid && hawb.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for=""> <span class="required" style="color: red;">*</span>MAWB Details</label>
+                                            <input type="text" class="form-control" name="mawb" required
+                                                #mawb="ngModel" ngModel>
+                                            <span class="help-block" *ngIf="!mawb.valid && mawb.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for=""> <span class="required" style="color: red;">*</span>HBL Details</label>
+                                            <input type="text" class="form-control" name="hbl" required
+                                                #hbl="ngModel" ngModel>
+                                            <span class="help-block" *ngIf="!hbl.valid && hbl.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for=""> <span class="required" style="color: red;">*</span>MBL Details</label>
+                                            <input type="text" class="form-control" name="mbl" required
+                                                #mbl="ngModel" ngModel>
+                                            <span class="help-block" *ngIf="!mbl.valid && mbl.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for=""> <span class="required" style="color: red;">*</span>P.O/Invoice No./Ref. No.</label>
+                                            <input type="text" class="form-control" name="invoice" required
+                                                #invoice="ngModel" ngModel>
+                                            <span class="help-block" *ngIf="!invoice.valid && invoice.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                    </div>
+                                    <!-- Billing info Ends -->
+                                    <!-- Address Info Starts -->
+                                    <div class="info">
+                                        <label class="subTitle" style="font-size: 19px;">Address  Information</label>
+                                        <hr>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4">
+                                            <label for=""> <span class="required" style="color: red;">*</span>Pickup Country</label>
+                                            <input type="text" class="form-control" name="pickupCountry" required
+                                                #pickupCountry="ngModel" ngModel>
+                                            <span class="help-block" *ngIf="!pickupCountry.valid && pickupCountry.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for=""> <span class="required" style="color: red;">*</span>Pickup State</label>
+                                            <input type="text" class="form-control" name="pickupState" required
+                                                #pickupState="ngModel" ngModel>
+                                            <span class="help-block" *ngIf="!pickupState.valid && pickupState.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for=""> <span class="required" style="color: red;">*</span>Pickup Address</label>
+                                            <input type="text" class="form-control" name="pickupAddress" required
+                                                #pickupAddress="ngModel" ngModel>
+                                            <span class="help-block" *ngIf="!pickupAddress.valid && pickupAddress.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for=""> <span class="required" style="color: red;">*</span>Commodity</label>
+                                            <input type="text" class="form-control" name="commodity" required
+                                                #commodity="ngModel" ngModel>
+                                            <span class="help-block" *ngIf="!commodity.valid && commodity.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for=""> <span class="required" style="color: red;">*</span>Vendor Ref. No.</label>
+                                            <input type="text" class="form-control" name="vendorRef" required
+                                                #vendorRef="ngModel" ngModel>
+                                            <span class="help-block" *ngIf="!vendorRef.valid && vendorRef.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                    </div>
+                                    <!-- Address Info Ends -->
+                                    <!-- Date Info Starts -->
+                                    <div class="info">
+                                        <label class="subTitle" style="font-size: 19px;">Date  Information</label>
+                                        <hr>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4">
+                                            <label for="date"> <span class="required" style="color: red;">*</span>Cargo Ready</label>
+                                            <input type="date" class="form-control" name="cargoReady" required
+                                                #cargoReady="ngModel" ngModel>
+                                            <span class="help-block" *ngIf="!cargoReady.valid && cargoReady.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="date"> <span class="required" style="color: red;">*</span>Cargo Pick Up</label>
+                                            <input type="date" class="form-control" name="cargoPickup" required
+                                                #cargoPickup="ngModel" ngModel>
+                                            <span class="help-block" *ngIf="!cargoPickup.valid && cargoPickup.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="date"> <span class="required" style="color: red;">*</span>Cargo Reached W/H</label>
+                                            <input type="date" class="form-control" name="cargoReachedWH" required
+                                                #cargoReachedWH="ngModel" ngModel>
+                                            <span class="help-block" *ngIf="!cargoReachedWH.valid && cargoReachedWH.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="date"> <span class="required" style="color: red;">*</span>Origin Clearance</label>
+                                            <input type="date" class="form-control" name="originClearance" required
+                                                #originClearance="ngModel" ngModel>
+                                            <span class="help-block" *ngIf="!originClearance.valid && originClearance.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="date"> <span class="required" style="color: red;">*</span>ETD</label>
+                                            <input type="date" class="form-control" name="etd" required
+                                                #etd="ngModel" ngModel>
+                                            <span class="help-block" *ngIf="!etd.valid && etd.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="date"> <span class="required" style="color: red;">*</span>ETA</label>
+                                            <input type="date" class="form-control" name="eta" required
+                                                #eta="ngModel" ngModel>
+                                            <span class="help-block" *ngIf="!eta.valid && eta.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="date"> <span class="required" style="color: red;">*</span>Draft HAWB</label>
+                                            <input type="date" class="form-control" name="draftHawb" required
+                                                #draftHawb="ngModel" ngModel>
+                                            <span class="help-block" *ngIf="!draftHawb.valid && draftHawb.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="date"> <span class="required" style="color: red;">*</span>Draft MAWB</label>
+                                            <input type="date" class="form-control" name="draftMawb" required
+                                                #draftMawb="ngModel" ngModel>
+                                            <span class="help-block" *ngIf="!draftMawb.valid && draftMawb.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="date"> <span class="required" style="color: red;">*</span>Draft HBL</label>
+                                            <input type="date" class="form-control" name="draftHbl" required
+                                                #draftHbl="ngModel" ngModel>
+                                            <span class="help-block" *ngIf="!draftHbl.valid && draftHbl.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="date"> <span class="required" style="color: red;">*</span>Draft MBL</label>
+                                            <input type="date" class="form-control" name="draftMbl" required
+                                                #draftMbl="ngModel" ngModel>
+                                            <span class="help-block" *ngIf="!draftMbl.valid && draftMbl.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="date"> <span class="required" style="color: red;">*</span>Vendor Ref. No.</label>
+                                            <input type="date" class="form-control" name="vendorRef" required
+                                                #vendorRef="ngModel" ngModel>
+                                            <span class="help-block" *ngIf="!vendorRef.valid && vendorRef.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="date"> <span class="required" style="color: red;">*</span>Confirmation Draft HAWB</label>
+                                            <input type="date" class="form-control" name="cDraftHawb" required
+                                                #cDraftHawb="ngModel" ngModel>
+                                            <span class="help-block" *ngIf="!cDraftHawb.valid && cDraftHawb.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="date"> <span class="required" style="color: red;">*</span>Confirmation Draft MAWB</label>
+                                            <input type="date" class="form-control" name="cDraftMawb" required
+                                                #cDraftMawb="ngModel" ngModel>
+                                            <span class="help-block" *ngIf="!cDraftMawb.valid && cDraftMawb.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="date"> <span class="required" style="color: red;">*</span>Confirmation Draft HBL</label>
+                                            <input type="date" class="form-control" name="cDraftHbl" required
+                                                #cDraftHbl="ngModel" ngModel>
+                                            <span class="help-block" *ngIf="!cDraftHbl.valid && cDraftHbl.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for=""> <span class="required" style="color: red;">*</span>Confirmation Draft MBL</label>
+                                            <input type="date" class="form-control" name="cDraftMbl" required
+                                                #cDraftMbl="ngModel" ngModel>
+                                            <span class="help-block" *ngIf="!cDraftMbl.valid && cDraftMbl.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="date"> <span class="required" style="color: red;">*</span>Final HAWB</label>
+                                            <input type="date" class="form-control" name="finalHawb" required
+                                                #finalHawb="ngModel" ngModel>
+                                            <span class="help-block" *ngIf="!finalHawb.valid && finalHawb.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="date"> <span class="required" style="color: red;">*</span>Final MAWB</label>
+                                            <input type="date" class="form-control" name="finalMawb" required
+                                                #finalMawb="ngModel" ngModel>
+                                            <span class="help-block" *ngIf="!finalMawb.valid && finalMawb.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="date"> <span class="required" style="color: red;">*</span>Final HBL</label>
+                                            <input type="date" class="form-control" name="finalHbl" required
+                                                #finalHbl="ngModel" ngModel>
+                                            <span class="help-block" *ngIf="!finalHbl.valid && finalHbl.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="date"> <span class="required" style="color: red;">*</span>Final MBL</label>
+                                            <input type="date" class="form-control" name="finalMbl" required
+                                                #finalMbl="ngModel" ngModel>
+                                            <span class="help-block" *ngIf="!finalMbl.valid && finalMbl.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for=""> <span class="required" style="color: red;">*</span>HAWB Number</label>
+                                            <input type="text" class="form-control" name="hawbNumber" required
+                                                #hawbNumber="ngModel" ngModel>
+                                            <span class="help-block" *ngIf="!hawbNumber.valid && hawbNumber.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for=""> <span class="required" style="color: red;">*</span>MAWB Number</label>
+                                            <input type="text" class="form-control" name="mawbNumber" required
+                                                #mawbNumber="ngModel" ngModel>
+                                            <span class="help-block" *ngIf="!mawbNumber.valid && mawbNumber.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for=""> <span class="required" style="color: red;">*</span>HBL Number</label>
+                                            <input type="text" class="form-control" name="hblNumber" required
+                                                #hblNumber="ngModel" ngModel>
+                                            <span class="help-block" *ngIf="!hblNumber.valid && hblNumber.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for=""> <span class="required" style="color: red;">*</span>MBL Number</label>
+                                            <input type="text" class="form-control" name="mblNumber" required
+                                                #mblNumber="ngModel" ngModel>
+                                            <span class="help-block" *ngIf="!mblNumber.valid && mblNumber.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for=""> <span class="required" style="color: red;">*</span>Telex Released HBL</label>
+                                            <input type="text" class="form-control" name="trHbl" required
+                                                #trHbl="ngModel" ngModel>
+                                            <span class="help-block" *ngIf="!trHbl.valid && trHbl.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for=""> <span class="required" style="color: red;">*</span>Telex Released MBL</label>
+                                            <input type="text" class="form-control" name="trMbl" required
+                                                #trMbl="ngModel" ngModel>
+                                            <span class="help-block" *ngIf="!trMbl.valid && trMbl.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                    </div>
+                                    <!-- Date Info Ends -->
+                                    <!-- Miscellaneous -->
+                                    <div class="info">
+                                        <label class="subTitle" style="font-size: 19px;">Miscellaneous</label>
+                                        <hr>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4">
+                                            <label for=""> <span class="required" style="color: red;">*</span>Vendor Invoice</label>
+                                            <input type="date" class="form-control" name="vendorInvoice" required
+                                                #vendorInvoice="ngModel" ngModel>
+                                            <span class="help-block" *ngIf="!vendorInvoice.valid && vendorInvoice.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for=""> <span class="required" style="color: red;">*</span>Manifestation</label>
+                                            <input type="date" class="form-control" name="manifest" required
+                                                #manifest="ngModel" ngModel>
+                                            <span class="help-block" *ngIf="!manifest.valid && manifest.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for=""> <span class="required" style="color: red;">*</span>Freight Charges</label>
+                                            <input type="text" class="form-control" name="freightCharges" required
+                                                #freightCharges="ngModel" ngModel>
+                                            <span class="help-block" *ngIf="!freightCharges.valid && freightCharges.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for=""> <span class="required" style="color: red;">*</span>Shipment Status</label>
+                                            <input type="text" class="form-control" name="shipmentStatus" required
+                                                #shipmentStatus="ngModel" ngModel>
+                                            <span class="help-block" *ngIf="!shipmentStatus.valid && shipmentStatus.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for=""> <span class="required" style="color: red;">*</span>Comments</label>
+                                            <input type="text" class="form-control" name="comments" required
+                                                #comments="ngModel" ngModel>
+                                            <span class="help-block" *ngIf="!comments.valid && comments.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for=""> <span class="required" style="color: red;">*</span>Vendor Invoice Number</label>
+                                            <input type="text" class="form-control" name="vendorInvoiceNumber" required
+                                                #vendorInvoiceNumber="ngModel" ngModel>
+                                            <span class="help-block" *ngIf="!vendorInvoiceNumber.valid && vendorInvoiceNumber.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for=""> <span class="required" style="color: red;">*</span>Bill To</label>
+                                            <input type="text" class="form-control" name="billTo" required
+                                                #billTo="ngModel" ngModel>
+                                            <span class="help-block" *ngIf="!billTo.valid && billTo.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for=""> <span class="required" style="color: red;">*</span>Vendor Invoice value</label>
+                                            <input type="text" class="form-control" name="vendorInvoiceValue" required
+                                                #vendorInvoiceValue="ngModel" ngModel>
+                                            <span class="help-block" *ngIf="!vendorInvoiceValue.valid && vendorInvoiceValue.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for=""> <span class="required" style="color: red;">*</span>Vendor Invoice Currency</label>
+                                            <input type="text" class="form-control" name="vendorInvoiceCurrency" required
+                                                #vendorInvoiceCurrency="ngModel" ngModel>
+                                            <span class="help-block" *ngIf="!vendorInvoiceCurrency.valid && vendorInvoiceCurrency.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for=""> <span class="required" style="color: red;">*</span>Telex Released MBL</label>
+                                            <input type="text" class="form-control" name="trMbl" required
+                                                #trMbl="ngModel" ngModel>
+                                            <span class="help-block" *ngIf="!trMbl.valid && trMbl.touched"
+                                                style="color: red;"></span>
+                                        </div>
+                                    </div>
+                                    <!-- Miscellaneous Ends -->
+                                    <div class="card-footer">
+                                            <Button type="reset" class="btn btn-danger">Reset</Button>
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

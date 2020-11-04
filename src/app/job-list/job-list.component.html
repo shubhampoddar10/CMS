@@ -1,0 +1,99 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <hr>
+        <div class="row">
+
+            <div class="col-md-12">
+                <button mat-raised-button type="button" class="btn btn-danger pull-right" [routerLink]="['/enquiry-form']" >Add Enquiry</button>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Job Card List</h4>
+                        <!-- <p class="card-category"> Here is a subtitle for this table</p> -->
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive table-hover">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        ID
+                                    </th>
+                                    <th>
+                                        Date
+                                    </th>
+                                    <th>
+                                        Mode
+                                    </th>
+                                    <th>
+                                        Type of Load
+                                    </th>
+                                    <th>
+                                        Activity
+                                    </th>
+                                    <th>
+                                        Inco Terms
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let job of jobCardList, let i = index">
+                                        <td>
+                                            {{i + 1}}
+                                        </td>
+                                        <td>
+                                            {{job.date}}
+                                        </td>
+                                        <td>
+                                            {{job.mode}}
+                                        </td>
+                                        <td>
+                                            {{job.type}}
+                                        </td>
+                                        <td>
+                                            {{job.activity}}
+                                        </td>
+                                        <td>
+                                            {{job.incoTerms}}
+                                        </td>
+                                        <td class="td-actions">
+                                            <button mat-raised-button type="button" matTooltip="Edit Task"
+                                                [matTooltipPosition]="'above'"
+                                                class="btn btn-primary btn-link btn-sm btn-just-icon"
+                                                [routerLink]="['/job-card', job._id ]"
+                                                [queryParams]="{allowEdit: job._id ? '1' : '0'}"
+                                                >  
+                                                <i class="material-icons">edit</i>
+                                            </button>
+                                            <button mat-raised-button type="button" matTooltip="Remove"
+                                                [matTooltipPosition]="'above'"
+                                                class="btn btn-danger btn-link btn-sm btn-just-icon"
+                                                (click)="onDelete(job._id)">
+                                                <i class="material-icons">delete</i>
+                                            </button>
+                                            <button mat-raised-button type="button" matTooltip="view"
+                                                [matTooltipPosition]="'above'"
+                                                class="btn btn-success btn-link btn-sm btn-just-icon">
+                                                <i class="material-icons">visibility</i>
+                                                <!-- <app-alert [message]="deleted" *ngIf="deleted" ></app-alert> -->
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>

@@ -1,0 +1,452 @@
+<!-- Title Starts -->
+<div class="container" style="margin-top: 50px;">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-danger">
+                    <h4 class="card-title">Enquiry</h4>
+                </div>
+                <!-- Title Ends -->
+
+                <!-- Contact Information Starts -->
+                <!-- Emp Form Starts -->
+                <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+                    <div class="card-body">
+                        <div class="col-md-12">
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <!-- User Data Starts -->
+                                    <label class="subTitle" style="font-size: 19px;">Contact Information</label>
+                                    <hr>
+                                    <div class="form-group">
+                                        <label for="name"> <span class="required"
+                                                style="color: red;">*</span>Name</label>
+                                        <input type="text" class="form-control" name="name" [(ngModel)]="name" required
+                                            #names="ngModel" ngModel>
+                                        <span class="help-block" *ngIf="!names.valid && names.touched"
+                                            style="color: red;">Please enter a
+                                            valid
+                                            name!</span>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="email"> <span class="required"
+                                                    style="color: red;">*</span>Email</label>
+                                            <input type="email" class="form-control" name="email" [(ngModel)]="email"
+                                                ngModel required email #emails="ngModel">
+                                            <span class="help-block" *ngIf="!emails.valid && emails.touched"
+                                                style="color: red;">Please enter
+                                                a
+                                                valid
+                                                email!</span>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label><span class="required" style="color: red;">*</span>Phone
+                                                Number</label>
+                                            <input type="number" class="form-control" name="phoneNumber"
+                                                [(ngModel)]="phoneNumber" ngModel required #pno="ngModel">
+                                            <span class="help-block" *ngIf="!pno.valid && pno.touched"
+                                                style="color: red;">Please enter a
+                                                valid
+                                                Number</span>
+                                        </div>
+                                    </div>
+                                    <!-- User Data Ends -->
+                                    <!-- Payment Methods Starts -->
+                                    <div class="form-row">
+                                        <div class="form-group form-inline" style="margin-top: 30px;">
+                                            <div>
+                                                <span style="font-weight: 600; color: #696969;"> <span class="required"
+                                                        style="color: red;">*</span>Payment
+                                                    Terms:</span>
+                                            </div>
+                                            <div class="radio" *ngFor="let pT of paymentTerms"
+                                                style="margin-left: 10px;">
+                                                <label>
+                                                    <input type="radio" name="pT" ngModel
+                                                        [(ngModel)]="selectedPaymentTerms" [value]="pT"
+                                                        class="form-control" required>
+                                                    {{ pT }}
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Payment Methods Ends -->
+                                </div>
+                                <!-- Contact Information Ends -->
+                                <!-- Transport Information Starts -->
+                                <div class="col-md-6">
+                                    <label class="subTitle" style="font-size: 19px;">Transport Information</label>
+                                    <hr>
+                                    <!-- Mode Of Transportation Starts         -->
+                                    <!-- <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Main Mode of Transport
+                                        <span class="caret"></span></button> -->
+                                    <mat-form-field class="form-row" class="form-group col-md-6">
+                                        <mat-label style="color: gray; font-weight: bold;"> <span class="required"
+                                                style="color: red;">*</span>Mode of Transport
+                                        </mat-label>
+                                        <mat-select class="form-control" name="mode" value="mode"
+                                            (change)="onSelectMOT($event)" [(ngModel)]="mot">
+                                            <mat-option *ngFor="let mode of modes" [value]="mode.value">
+                                                {{mode.viewValue}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                    <!-- INCO Terms Starts -->
+                                    <mat-form-field class="form-row" class="form-group col-md-6">
+                                        <mat-label style="color: gray; font-weight: bold;"> <span class="required"
+                                                style="color: red;">*</span>INCO
+                                            Terms
+                                        </mat-label>
+                                        <mat-select class="form-control" name="incoTerms" ngModel
+                                            [(ngModel)]="selectedInco" value="incoTerms">
+                                            <mat-option *ngFor="let inco of incos" [value]="inco.value">
+                                                {{inco.viewValue}}
+                                            </mat-option>
+                                        </mat-select>
+                                        <mat-icon matSuffix style="font-size: 1.2em"></mat-icon>
+                                    </mat-form-field>
+                                    <!-- INCO Terms Ends -->
+                                    <!-- Sea Mode starts -->
+                                    <mat-form-field *ngIf="mot == 'Sea'" class="form-group col-md-6">
+                                        <mat-label style="color: gray; font-weight: bold;"> <span class="required"
+                                                style="color: red;">*</span>Load Type
+                                        </mat-label>
+                                        <mat-select class="form-control" name="type" ngModel
+                                            (change)="onSelectType($event)" [(ngModel)]="type">
+                                            <mat-option *ngFor="let type of typeOfLoad" [value]="type.value">
+                                                {{ type.viewValue }}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                    <div class="form-row" *ngIf="mot == 'Sea'">
+                                        <div class="form-group col-md-5">
+                                            <label> <span class="required" style="color: red;">*</span>Port of
+                                                Loading</label>
+                                            <input type="text" class="form-control" name="pOL" value="pOL" ngModel
+                                                [(ngModel)]="selectedpOL">
+
+                                        </div>
+                                        <div class="form-group col-md-7" style="padding-left: 60px;">
+                                            <label> <span class="required" style="color: red;">*</span>Port
+                                                Destination</label>
+                                            <input type="text" class="form-control" name="pD" value="pD" ngModel
+                                                [(ngModel)]="selectedpD">
+
+                                        </div>
+                                    </div>
+                                    <!-- Sea Mode Ends -->
+                                    <!-- Air Mode Starts -->
+                                    <div class="form-row" *ngIf="mot == 'Air'">
+                                        <div class="form-group col-md-5">
+                                            <label> <span class="required" style="color: red;">*</span>Airport of
+                                                Loading</label>
+                                            <input type="text" class="form-control" name="aOL" ngModel
+                                                [(ngModel)]="selectedaOL">
+                                        </div>
+                                        <div class="form-group col-md-7" style="padding-left: 60px;">
+                                            <label> <span class="required" style="color: red;">*</span>Airport
+                                                Destination</label>
+                                            <input type="text" class="form-control" name="aD" ngModel
+                                                [(ngModel)]="selectedaD">
+                                        </div>
+                                    </div>
+                                    <!-- Air Mode Ends -->
+                                    <!-- Mode Of Transportation Ends -->
+                                </div>
+                            </div>
+                            <!-- Transport Information Ends -->
+                            <!-- Package Details Starts -->
+                            <div class="form-row" style="margin-top: 50px;">
+                                <div class="col-md-12">
+                                    <label class="subTitle" style="font-size: 19px;">Package Detials</label>
+                                    <hr style="border: 0.5px solid gray;">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-3">
+                                            <label> <span class="required" style="color: red;">*</span>Gross
+                                                Weight</label>
+                                            <input type="number" class="form-control" name="grossWeight" ngModel
+                                                required #grossWeight="ngModel" [(ngModel)]="selectedGw">
+                                            <span class="help-block" *ngIf="!grossWeight.valid && grossWeight.touched"
+                                                style="color: red;">Please enter a
+                                                valid
+                                                Weight!</span>
+                                        </div>
+                                        <mat-form-field class="form-group col-md-1">
+                                            <mat-label style="color: gray; font-weight: bold;"><span class="required"
+                                                    style="color: red;">*</span> Unit
+                                            </mat-label>
+                                            <mat-select class="form-control" name="unit" ngModel
+                                                [(ngModel)]="selectedUnit" required>
+                                                <mat-option *ngFor="let unit of weight" [value]="unit.value">
+                                                    {{ unit.viewValue }}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                        <div class="form-group col-md-4">
+                                            <label for="name"> <span class="required"
+                                                    style="color: red;">*</span>Shipper Name</label>
+                                            <input type="text" class="form-control" name="shipperName" ngModel required
+                                                #shipperName="ngModel" [(ngModel)]="selectedSn">
+                                            <span class="help-block" *ngIf="!shipperName.valid && shipperName.touched"
+                                                style="color: red;">Please enter a
+                                                valid
+                                                Shipper Name!</span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="email"> <span class="required"
+                                                    style="color: red;">*</span>Shipper Email</label>
+                                            <input type="text" class="form-control" name="shipperEmail" ngModel required
+                                                #shipperEmail="ngModel" [(ngModel)]="selectedSe">
+                                            <span class="help-block" *ngIf="!shipperEmail.valid && shipperEmail.touched"
+                                                style="color: red;">Please enter a
+                                                valid
+                                                Shipper Email!</span>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-3">
+                                            <label> <span class="required" style="color: red;">*</span>Pick Up
+                                                Address</label>
+                                            <input type="text" class="form-control" name="pA" ngModel required
+                                                #pA="ngModel" [(ngModel)]="selectedPa">
+                                            <span class="help-block" *ngIf="!pA.valid && pA.touched"
+                                                style="color: red;">Please enter a
+                                                valid
+                                                Pick Up Adress!</span>
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label> <span class="required" style="color: red;">*</span>Destination
+                                                Address</label>
+                                            <input type="text" class="form-control" name="dA" ngModel required
+                                                #dA="ngModel" [(ngModel)]="selectedDa">
+                                            <span class="help-block" *ngIf="!dA.valid && dA.touched"
+                                                style="color: red;">Please enter a
+                                                valid
+                                                Destination Adress!</span>
+                                        </div>
+                                        <mat-form-field class="form-group col-md-3">
+                                            <mat-label style="color: gray; font-weight: bold;"> <span class="required"
+                                                    style="color: red;">*</span>Commodity
+                                            </mat-label>
+                                            <mat-select class="form-control" name="commodity" ngModel required
+                                                [(ngModel)]="selectedCommodity">
+                                                <mat-option *ngFor="let commodity of commodities"
+                                                    [value]="commodity.value">
+                                                    {{ commodity.viewValue }}</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                        <mat-form-field class="form-group col-md-3">
+                                            <mat-label style="color: gray; font-weight: bold;"> <span class="required"
+                                                    style="color: red;">*</span>Transit
+                                                Insurance</mat-label>
+                                            <mat-select class="form-control" name="transitInsurance" ngModel required
+                                                [(ngModel)]="selectedTi">
+                                                <mat-option *ngFor="let i of insurance" [value]="i.value">
+                                                    {{ i.viewValue }}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                    <!-- Package Details Ends -->
+                                    <!-- LCL Type Starts -->
+                                    <div *ngIf="mot == 'Sea' && type == 'LCL'">
+                                        <div class="form-group col-md-5" style="padding-left: 0;">
+                                            <label for="CBM"> <span class="required"
+                                                    style="color: red;">*</span>CBM</label>
+                                            <input type="number" class="form-control" name="CBM" ngModel #CBM="ngModel"
+                                                [(ngModel)]="selectedCBM">
+                                            <span class="help-block" *ngIf="!CBM.valid && CBM.touched">Please enter a
+                                                valid
+                                                CBM!</span>
+                                        </div>
+                                        <div class="form-group col-md-5" style="padding-left: 0;">
+                                            <button class="btn btn-dark" type="button"
+                                                (click)="onCalculateCBM()">Calculate
+                                                CBM</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row" style="margin-top: 50px;" *ngIf="showElement">
+                                        <div class="col-md-12" style="padding-left: 0;">
+                                            <form #cf="ngForm">
+                                                <label class="subTitle">Calculate CBM</label>
+                                                <hr>
+                                                <div class="form-row" *ngFor="let form of formArray">
+                                                    <div class="form-group col-md-2">
+                                                        <label for="name"> <span class="required"
+                                                                style="color: red;">*</span>Length</label>
+                                                        <input type="number" class="form-control" name="length"
+                                                            [value]="length" [(ngModel)]="length" required>
+                                                    </div>
+                                                    <mat-form-field class="form-group col-md-1">
+                                                        <mat-label style="color: gray; font-weight: bold;">Unit
+                                                        </mat-label>
+                                                        <mat-select class="form-control" name="unitL" value="unitL"
+                                                            ngModel>
+                                                            <mat-option *ngFor="let dimension of dimensions"
+                                                                [value]="dimension.value">
+                                                                {{ dimension.viewValue }}</mat-option>
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                    <div class="form-group col-md-2">
+                                                        <label for="name"> <span class="required"
+                                                                style="color: red;">*</span>Height</label>
+                                                        <input type="number" class="form-control" name="height"
+                                                            value="height" [(ngModel)]="height">
+
+                                                    </div>
+                                                    <mat-form-field class="form-group col-md-1">
+                                                        <mat-label style="color: gray; font-weight: bold;">Unit
+                                                        </mat-label>
+                                                        <mat-select class="form-control" name="unitH" value="unitH"
+                                                            ngModel>
+                                                            <mat-option *ngFor="let dimension of dimensions"
+                                                                [value]="dimension.value">
+                                                                {{ dimension.viewValue }}</mat-option>
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                    <div class="form-group col-md-2">
+                                                        <label for="name"> <span class="required"
+                                                                style="color: red;">*</span>Width</label>
+                                                        <input type="number" class="form-control" name="width"
+                                                            [(ngModel)]="width">
+                                                    </div>
+                                                    <mat-form-field class="form-group col-md-1">
+                                                        <mat-label style="color: gray; font-weight: bold;">Unit
+                                                        </mat-label>
+                                                        <mat-select class="form-control" name="unitW" value="unitW">
+                                                            <mat-option *ngFor="let dimension of dimensions"
+                                                                [value]="dimension.value">
+                                                                {{ dimension.viewValue }}</mat-option>
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                    <div class="form-group col-md-3">
+                                                        <label for="name">Number of Packages</label>
+                                                        <input type="number" class="form-control" name="nop"
+                                                            value="numberOfPackages" ngModel required #nop="ngModel">
+                                                        <span class="help-block"
+                                                            *ngIf="!nop.valid && nop.touched">Please enter a
+                                                            valid
+                                                            Packages!</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="col-md-3" style="padding-top: 23px;">
+                                                        <button (click)="onAddDimension()" class="btn btn-dark">Add more
+                                                            dimensions</button>
+                                                    </div>
+                                                    <div class="col-md-3" style="padding-top: 23px;">
+                                                        <button (click)="calculate()"
+                                                            class="btn btn-dark">Calculate</button>
+                                                    </div>
+                                                    <div class="col-md-3" style="padding-top: 23px;">
+                                                        <button (click)="onReset(cbmForm)"
+                                                            class="btn btn-dark">Reset</button>
+                                                    </div>
+                                                    <div class="form-group col-md-2">
+                                                        <label for="name">CBM Value</label>
+                                                        <input type="text" class="form-control" name="CBMValue" ngModel
+                                                            disabled>
+                                                    </div>
+                                                </div>
+
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <!-- LCL Type Ends -->
+                                    <!-- FCL Type Starts -->
+                                    <div *ngIf="mot == 'Sea' && type == 'FCL'" class="form-row"
+                                        style="margin-top: 50px;">
+                                        <div class="col-md-12">
+                                            <label class="subTitle" style="font-size: 19px;">Equipment</label>
+                                            <hr>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-3">
+                                                    <img src="../../assets/images/guruashish_flat_all_type_20.png"
+                                                        style="width: 100%; height:200px;" alt="">
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                    <img src="../../assets/images/guruashish_flat_all_type_40.png"
+                                                        style="width: 100%; height:200px;" alt="">
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                    <img src="../../assets/images/guruashish_flat_collapsible_platform_20.png"
+                                                        style="width: 100%; height:200px;" alt="">
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                    <img src="../../assets/images/guruashish_flat_collapsible_platform_40.png"
+                                                        style="width: 100%; height:200px;" alt="">
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                    <img src="../../assets/images/guruashish_general_purpose_container_20.png"
+                                                        style="width: 100%; height:200px;" alt="">
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                    <img src="../../assets/images/guruashish_general_purpose_container_40.png"
+                                                        style="width: 100%; height:200px;" alt="">
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                    <img src="../../assets/images/guruashish_high_cube_general_purpose_container_40.png"
+                                                        style="width: 100%; height:200px;" alt="">
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                    <img src="../../assets/images/guruashish_high_cube_general_purpose_container_45.png"
+                                                        style="width: 100%; height:200px;" alt="">
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                    <img src="../../assets/images/guruashish_open_top_container_20.png"
+                                                        style="width: 100%; height:200px;" alt="">
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                    <img src="../../assets/images/guruashish_open_top_container_40.png"
+                                                        style="width: 100%; height:200px;" alt="">
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                    <img src="../../assets/images/guruashish_refrigerated_container_20.png"
+                                                        style="width: 100%; height:200px;" alt="">
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                    <img src="../../assets/images/guruashish_refrigerated_container_40.png"
+                                                        style="width: 100%; height:200px;" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- FCL Type Ends -->
+                                    <!-- Comment Starts -->
+                                    <div class="form-row" style="margin-top: 50px;">
+                                        <div class="form-group col-md-6" style="padding-left: 0;">
+                                            <label for="comment"> <span class="required" style="color: red;">*</span>
+                                                Comments</label>
+                                            <input type="text" class="form-control" name="comments" ngModel required
+                                                #comments="ngModel" [(ngModel)]="selectedComments">
+                                            <span class="help-block" *ngIf="!comments.valid && comments.touched"
+                                                style="color: red;">Please enter Your Comments!</span>
+                                        </div>
+                                        <!-- Comment Ends -->
+                                        <!-- Attachments Starts -->
+                                        <div class="form-group col-md-6">
+                                            <label for=""><span>Attachments</span></label>
+                                            <input type="file" class="custom-file-input" id="customFile"
+                                                class="form-control" name="attachments" ngModel>
+                                            <label class="custom-file-label" for="customFile"
+                                                style="cursor: pointer; border: solid 0.5px; color: lightgray;"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Attachments Ends -->
+                    <div class="card-footer">
+                        <Button type="reset" class="btn btn-danger" (click)="onResetEmp()">Reset</Button>
+                        <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Submit</button>
+                    </div>
+                </form>
+                <!-- Emp Form Ends -->
+            </div>
+        </div>
+    </div>
+</div>

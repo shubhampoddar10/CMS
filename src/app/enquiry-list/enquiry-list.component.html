@@ -1,0 +1,96 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <hr>
+        <div class="row">
+
+            <div class="col-md-12">
+                <button mat-raised-button type="button" class="btn btn-danger pull-right"
+                    [routerLink]="['/enquiry-form']">Add Enquiry</button>
+                <button mat-raised-button type="button" class="btn btn-danger pull-right"
+                    [routerLink]="['/job-card']">Create Job Card</button>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Enquiry List</h4>
+                        <!-- <p class="card-category"> Here is a subtitle for this table</p> -->
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive table-hover">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        ID
+                                    </th>
+                                    <th>
+                                        Name
+                                    </th>
+                                    <th>
+                                        Email
+                                    </th>
+                                    <th>
+                                        Contact Number
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor=' let enquiry of enquiries; let i = index '>
+                                        <td>
+                                            {{i+1}}
+                                        </td>
+                                        <td>
+                                            {{enquiry.name}}
+                                        </td>
+                                        <td>
+                                            {{enquiry.email}}
+                                        </td>
+                                        <td>
+                                            {{enquiry.phoneNumber}}
+                                        </td>
+                                        <td class="td-actions">
+                                            <button mat-raised-button type="button" matTooltip="Edit Task"
+                                                [matTooltipPosition]="'above'"
+                                                class="btn btn-primary btn-link btn-sm btn-just-icon"
+                                                [routerLink]="['/enquiry-form',enquiry._id]"
+                                                >
+                                                <i class="material-icons">edit</i>
+                                            </button>
+                                            <button mat-raised-button type="button" matTooltip="Remove"
+                                                [matTooltipPosition]="'above'"
+                                                class="btn btn-danger btn-link btn-sm btn-just-icon"
+                                                (click)="onDelete(enquiry,i)">
+                                                <i class="material-icons">delete</i>
+                                            </button>
+                                            <button mat-raised-button type="button" matTooltip="JobCard"
+                                                [matTooltipPosition]="'above'"
+                                                class="btn btn-danger btn-link btn-sm btn-just-icon"
+                                                [routerLink]="['/job-card', enquiry._id]"
+                                                >
+                                                <i class="material-icons">work_outline</i>
+                                            </button>
+                                            <button mat-raised-button type="button" matTooltip="view"
+                                                [matTooltipPosition]="'above'"
+                                                class="btn btn-primary btn-link btn-sm btn-just-icon"
+                                                (click)="onView(enquiry._id)">
+                                                <i class="material-icons">visibility</i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>

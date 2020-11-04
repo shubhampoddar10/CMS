@@ -1,0 +1,19 @@
+input.ng-invalid.ng-touched {
+    border-bottom: 1px red solid;
+    
+}  
+
+h4{
+    color: #696969;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+}
+
+label{
+    color: gray;
+    
+}
+
+::ng-deep .mat-form-field-underline {
+    display: none;
+  }
